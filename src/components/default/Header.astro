@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+
+const linksPage = [
+    {name: 'Inicio', link: '/'},
+    {name: 'Estadisticas', link: '/estadisticas'},
+    {name: 'Clasificación', link: '/clasificacion'},
+    {name: 'Equipos', link: '/equipos'}
+]
+
+const path = Astro.url;
+
+---
+<header class="h-14 bg-[rgba(109,56,241,0.8))] dark:bg-[rgba(10,2,31,0.8)]  sticky top-0 z-9999 flex items-center">
+    <div class="container mx-auto px-3 max-w-[1080px] flex justify-between  items-center text-white ">
+        <nav class="flex">
+            {
+                linksPage.map(res => (
+                    <a href={res.link} class="mx-2">
+                        <span  >{res.name}</span>
+
+                        {
+                            (path.pathname).split('/').at(1) === (res.link).split('/').at(1) && (
+                                <div class="border-t-2 border-white mt-0" transition:name="links-header"></div>
+                            )
+                        }
+                    </a>
+                ))
+            }
+           
+        </nav>
+        <div class="flex items-center" >
+            <button id="buttonTheme" class=" mr-4">
+                <Icon name="sun" class="text-3xl" style="display: none" data-ligth />
+                <Icon name="moon" class="text-2xl" style="display: none" data-dark />
+            </button>
+            <a href="" class="text-2xl">
+                <Icon name="git-hub"/>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+
+
+<script>
+const modePage  = () =>{
+    // capturamos tema de color
+    const savedMode = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme");
+    const iLight = document.querySelector('[data-ligth]') as HTMLElement;
+    const iDark = document.querySelector('[data-dark]') as HTMLElement;
+    
+    
+    if(savedMode == "dark"){
+     
+      document.documentElement.setAttribute('data-theme', 'dark');
+      iDark.setAttribute("style", "display: flex");
+      iLight.setAttribute("style", "display: none");
+      
+    }
+    else{
+      document.documentElement.removeAttribute('data-theme');
+      iLight.setAttribute("style", "display: flex");
+      iDark.setAttribute("style", "display: none");
+    }
+    
+    iLight.addEventListener('click', ()=> {
+     document.documentElement.setAttribute('data-theme', 'dark');
+     localStorage.setItem("theme", "dark");
+     
+     iDark.setAttribute('style', 'display: flex');
+     iLight.setAttribute('style', 'display: none');
+    
+    });
+    
+    iDark.addEventListener('click', () => {
+     document.documentElement.removeAttribute('data-theme');
+     localStorage.setItem("theme", "light");
+    
+     iDark.setAttribute('style', 'display: none');
+     iLight.setAttribute('style', 'display: flex');
+    
+    })
+
+}
+document.addEventListener('astro:page-load', modePage);
+document.addEventListener('DOMContentLoaded', modePage);
+</script>

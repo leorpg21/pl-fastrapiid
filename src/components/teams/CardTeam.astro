@@ -1,0 +1,12 @@
+---
+interface Props {
+    url: string;
+    name: string;
+    image: string;
+}
+const {url, name, image} = Astro.props;
+---
+<div class="rounded-xl flex flex-col items-center w-34 h-39">
+    <img src={image} alt={name} class="w-8/10" transition:name={`image-team-${url}`}>
+    <a href={`/equipos/${url}`} class="text-center hover:text-[rgba(109,56,241,0.8)] dark:text-white hover:dark:text-orange-300">{name}</a>
+</div>

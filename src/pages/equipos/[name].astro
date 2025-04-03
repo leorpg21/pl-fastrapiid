@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { allTeams } from "@api/teams";
+import { team } from "@api/teams";
+import type { Teams } from "@interfaces/all-teams.interfaces";
+import type { GetStaticPaths } from "astro";
+
+
+export const getStaticPaths = ( async () => {
+    const data = (await allTeams()) as Teams;
+
+    return data.teams.map(res => (
+        {
+            params: {
+                name: res.tla 
+            },
+            props: { 
+                nameComp: res.name, 
+                shortName: res.shortName,
+                image: res.crest,
+            }
+        }
+    ))
+    
+}) satisfies GetStaticPaths;
+
+
+const { name } = Astro.params;
+const {nameComp,shortName,image } = Astro.props;
+
+const url = Astro.url;
+const title = `${shortName} | Pag.`;
+console.log(url);
+
+---
+
+
+<Layout title={title}>
+    <section class="bg-pag-m">
+        <div class=" container mx-auto px-3 max-w-[1080px]">
+            <h2 class="pt-2 text-center font-extrabold text-2xl text-white ">{nameComp}</h2>
+            <button onclick="history.back()">Regresar</button>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+                <div>
+                    <img src={image} alt={name} transition:name={`image-team-${url}`} />
+                </div>
+                <div>
+                    <h3>{shortName}</h3>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</Layout>

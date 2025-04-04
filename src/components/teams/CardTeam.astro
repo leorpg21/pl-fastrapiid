@@ -1,12 +1,19 @@
 ---
 interface Props {
+    id: number;
     url: string;
     name: string;
     image: string;
 }
-const {url, name, image} = Astro.props;
+const {id, url, name, image} = Astro.props;
+
+const imgSrc = `/teams/${id}.svg`;
 ---
-<div class="rounded-xl flex flex-col items-center w-34 h-39">
-    <img src={image} alt={name} class="w-8/10" transition:name={`image-team-${url}`}>
-    <a href={`/equipos/${url}`} class="text-center hover:text-[rgba(109,56,241,0.8)] dark:text-white hover:dark:text-orange-300">{name}</a>
-</div>
+<a href={`/equipos/${url}`} class="group rounded-xl flex flex-col items-center justify-between w-50 h-50 border border-[rgba(109,56,241,0.8)]">
+    
+        <img src={imgSrc} alt={name} class="w-30 group-hover:w-48 transition-all duration-700 ease-in  " transition:name={`image-team-${url}`}>
+
+        <div class="group-hover:hidden h-10 bg-gray-100 dark:bg-[rgba(109,56,241,0.8)] w-full rounded-xl flex items-center justify-center ">
+            <span class="text-sm text-center font-bold text-[rgba(109,56,241,0.8)] dark:text-white hover:dark:text-orange-300 transition-all duration-150 ease-in ">{name}</span>
+        </div>
+</a>

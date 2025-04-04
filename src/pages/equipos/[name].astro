@@ -15,9 +15,9 @@ export const getStaticPaths = ( async () => {
                 name: res.tla 
             },
             props: { 
+                id: res.id,
                 nameComp: res.name, 
                 shortName: res.shortName,
-                image: res.crest,
             }
         }
     ))
@@ -26,11 +26,11 @@ export const getStaticPaths = ( async () => {
 
 
 const { name } = Astro.params;
-const {nameComp,shortName,image } = Astro.props;
+const {nameComp,shortName,id } = Astro.props;
 
 const url = Astro.url;
 const title = `${shortName} | Pag.`;
-console.log(url);
+const imgSrc = `/teams/${id}.svg`;
 
 ---
 
@@ -42,7 +42,7 @@ console.log(url);
             <button onclick="history.back()">Regresar</button>
             <div class="mt-8 grid grid-cols-2 gap-4">
                 <div>
-                    <img src={image} alt={name} transition:name={`image-team-${url}`} />
+                    <img src={imgSrc} alt={name} transition:name={`image-team-${url}`} />
                 </div>
                 <div>
                     <h3>{shortName}</h3>

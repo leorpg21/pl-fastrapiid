@@ -2,8 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import { allTeams } from "@api/teams";
 import { team } from "@api/teams";
-import type { Teams } from "@interfaces/all-teams.interfaces";
+import type { Competition, Teams } from "@interfaces/all-teams.interfaces";
 import type { GetStaticPaths } from "astro";
+import { Icon } from "astro-icon/components";
 
 
 export const getStaticPaths = ( async () => {
@@ -18,6 +19,15 @@ export const getStaticPaths = ( async () => {
                 id: res.id,
                 nameComp: res.name, 
                 shortName: res.shortName,
+                address : res.address,
+                coach: `${res.coach.firstName} ${res.coach.lastName}`,
+                founded: res.founded,
+                venue: res.venue,
+                color : res.clubColors,
+                webSite: res.website,
+
+                competion: res.runningCompetitions,
+                staff: res.staff,
             }
         }
     ))
@@ -26,27 +36,65 @@ export const getStaticPaths = ( async () => {
 
 
 const { name } = Astro.params;
-const {nameComp,shortName,id } = Astro.props;
+const {nameComp,shortName,id, address,coach, founded, color, venue, webSite, competion, staff} = Astro.props;
 
 const url = Astro.url;
 const title = `${shortName} | Pag.`;
 const imgSrc = `/teams/${id}.svg`;
 
+const dataCompetion = competion as Competition[];
+
 ---
 
 
 <Layout title={title}>
-    <section class="bg-pag-m">
-        <div class=" container mx-auto px-3 max-w-[1080px]">
-            <h2 class="pt-2 text-center font-extrabold text-2xl text-white ">{nameComp}</h2>
-            <button onclick="history.back()">Regresar</button>
-            <div class="mt-8 grid grid-cols-2 gap-4">
-                <div>
-                    <img src={imgSrc} alt={name} transition:name={`image-team-${url}`} />
+    <section class="relative">
+        <div class="absolute bg-page-init w-screen h-[150px]">
+        </div>
+        <div class="relative container mx-auto px-3 max-w-[1080px]">
+            <h2 class="pt-2 text-center font-extrabold text-2xl text-white ">Equipos</h2>
+            <button onclick="history.back()" class="mt-20 flex text-(--color-purple) font-bold hover:text-(--color-purple-2) dark:text-gray-300">
+                <Icon name="arrow-left" class="mr-2 size-7"/>
+                Regresar</button>
+            <div class="mt-8 grid grid-cols-10 gap-25">
+                <div class="col-span-4">
+                    <img src={imgSrc} alt={name} transition:name={`image-team-${id}`} />
+
                 </div>
-                <div>
-                    <h3>{shortName}</h3>
+                
+                <div class="col-span-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-2xl font-bold text-(--color-purple)">{nameComp}</h3>
+                            <a href={webSite} class="mt-0 ml-2 text-gray-600 text-xl hover:text-(--color-purple-2)"><Icon name="web-site"/></a>
+                        </div>
+                        <span>{address}</span>
+                    </div>
+                    <div class="">
+                        <h4 class="text-lg font-bold text-(--color-purple)" >Datos </h4>
+                        <ul class="">
+                            <li>Fundación: <span>{founded} </span></li>
+                            <li>Estadio: {venue}</li>
+                            <li>Colores: {color}</li>
+                            <li>Entrenador: {coach}</li>
+                        </ul>
+                    </div>
+
+                    <div class="">
+                        <h4 class="text-lg font-bold text-(--color-purple)" >Competiciones</h4>
+                        <div class="flex  mt-2">
+                            {
+                                dataCompetion.map(res => (
+                                    <img src={res.emblem} alt={res.name} class="w-10 mr-5"/>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    
+
                 </div>
+                
             </div>
         </div>
 

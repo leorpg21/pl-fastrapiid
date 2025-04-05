@@ -35,13 +35,14 @@ const { title } = Astro.props;
 
 <style is:global>
 	@reference '../styles/global.css';
-
+	:root {
+		--color-purple : rgb(109,56,241);
+		--color-purple-2 : rgb(10,2,31);
+	}
 	.bg-page-init {
 		@apply bg-gradient-to-b from-[rgba(109,56,241,0.8)] dark:from-[rgba(10,2,31,0.8)]  to-[rgba(255,0,0,0)] dark:to-[rgb(81,50,158)]
 	}
-	.bg-pag-m {
-		@apply bg-gradient-to-b from-[rgba(109,56,241,0.8)] dark:from-[rgba(10,2,31,0.8)] from-0%  via-[rgba(255,0,0,0)] dark:via-[rgb(81,50,158)] via-20% to-[rgba(255,0,0,0)] dark:to-[rgb(81,50,158)] to-30% h-screen w-full;
-	}
+	
 
 	.bg-footer {
 		@apply bg-gradient-to-b from-[rgba(255,0,0,0)] dark:from-[rgb(81,50,158)]  to-[rgba(109,56,241,0.8)] dark:to-[rgba(10,2,31,0.8)]

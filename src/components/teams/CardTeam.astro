@@ -9,9 +9,9 @@ const {id, url, name, image} = Astro.props;
 
 const imgSrc = `/teams/${id}.svg`;
 ---
-<a href={`/equipos/${url}`} class="group rounded-xl flex flex-col items-center justify-between w-50 h-50 border border-[rgba(109,56,241,0.8)]">
+<a href={`/equipos/${url}`} class="group rounded-xl flex flex-col items-center justify-between w-50 h-50 border border-gray-100 dark:border-[rgba(109,56,241,0.8)] hover:border-[rgba(109,56,241,0.8)] hover:bg-gray-200 dark:hover:bg-[rgba(109,56,241,0.8)]">
     
-        <img src={imgSrc} alt={name} class="w-30 group-hover:w-48 transition-all duration-700 ease-in  " transition:name={`image-team-${url}`}>
+        <img src={imgSrc} alt={name} class="w-40 group-hover:w-48 transition-all duration-150 ease-in  " transition:name={`image-team-${id}`}>
 
         <div class="group-hover:hidden h-10 bg-gray-100 dark:bg-[rgba(109,56,241,0.8)] w-full rounded-xl flex items-center justify-center ">
             <span class="text-sm text-center font-bold text-[rgba(109,56,241,0.8)] dark:text-white hover:dark:text-orange-300 transition-all duration-150 ease-in ">{name}</span>

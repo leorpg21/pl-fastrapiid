@@ -1,14 +1,24 @@
-<!-- <section class="container mx-auto px-3 max-w-[1080px] ">
-    <h2 class="text-center text-4xl font-extrabold"> Estadisticas </h2>
-    <div class="grid grid-cols-2">
+<article class="relative mt-50 container mx-auto px-3 max-w-[1080px] ">
+    <h2 class="my-10 text-center text-4xl font-extrabold text-(--color-purple-2) dark:text-white"> Estadisticas </h2>
+    <section class="flex flex-wrap justify-around">
        
-            <div class="flex justify-center items-center w-full">
-                <img src="/goles-pl.png" alt="" class="w-70">
-                Goles
-            </div>
-            <div class="flex justify-center items-center">
-                <img src="/asistencia-pl.png" alt="" class="w-70">
-                Goles
-            </div>
-    </div>
-</section> -->
+            <a href="/estadisticas/goles" class="group flex flex-col justify-between items-center w-[300px] h-[350px] border border-(--color-purple) rounded-2xl hover:bg-gray-200 dark:hover:bg-(--color-purple)">
+
+                <img src="/statistics/goles.svg" alt="" class="h-[200px] group-hover:h-[340px] mask-fade-bottom transition-all duration-300 ease-in-out " transition:name="img-goles">
+                <div class="w-full text-center group-hover:hidden text-sm  dark:text-white">
+                    <h3 class="text-center text-(--color-purple) dark:text-[#A7B2F2] text-2xl font-bold">Goles</h3>
+                    <p>Descubre quién lidera la tabla de goleadores de la Premier League.</p>
+                    <p>Consulta las estadísticas actualizadas y sigue de cerca a los máximos artilleros de la temporada</p>
+                </div>
+            </a>
+            <a href="/estadisticas/asistencias" class="group flex flex-col justify-between items-center w-[300px] h-[350px]  border-(--color-purple) border rounded-2xl hover:bg-gray-200 dark:hover:bg-(--color-purple)">
+                <img src="/statistics/asistencias.svg" alt="" class="h-[200px] group-hover:h-[340px] mask-fade-bottom transition-all duration-300 ease-in-out" transition:name="img-asistencias">
+                <div class="w-full text-center text-sm group-hover:hidden dark:text-[#A192A6]">
+                    <h3 class="text-center text-(--color-purple) dark:text-[#A7B2F2] text-2xl font-bold">Asitencias</h3>
+                    <p>Descubre quién lidera la tabla de asistencias de la Premier League.</p>
+                    <p>Consulta las estadísticas actualizadas y sigue de cerca a los mejores pasadores de la temporada.</p>
+                </div>
+                
+            </a>
+    </section>
+</article>

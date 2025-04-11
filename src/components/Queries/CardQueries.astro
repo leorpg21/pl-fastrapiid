@@ -1,0 +1,22 @@
+---
+interface Props {
+    title : string;
+    img   : string;
+    url   : string;
+}
+
+const {title, img, url} = Astro.props;
+
+---
+
+<a 
+  href={url}
+  class="group flex flex-col justify-around w-[270px] h-[288px] border py-2 px-6 hover:px-1 border-gray-300 dark:border-(--color-purple) hover:border-(--color-purple) hover:bg-gray-300 dark:hover:bg-(--color-purple) rounded-xl transition-all duration-300 ease-in-out"
+>
+    <img src={img} alt={title} class="rounded-xl">
+    <div class="w-full text-center rounded-lg h-[28px] items-center">
+        <span class="group-hover:hidden text-lg text-(--color-purple) dark:text-white">{title}</span>
+
+    </div>
+</a>
+

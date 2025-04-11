@@ -1,3 +1,27 @@
-<section>
+---
+import CardQueries from "@components/Queries/CardQueries.astro"
+
+const queries = [
+    {title: 'Posiciones', img: '/queries/posiciones.png', url: '/posiciones'},
+    {title: 'Equipos', img: '/queries/equipos.png', url: '/equipos'},
+    {title: 'Calendario', img: '/queries/calendario.png', url: '/clasificacion'}
+]
+---
+
+<article class="mt-40 relative container mx-auto px-3 max-w-[1080px] min-h-screen">
+    <h2 class="text-center text-4xl text-(--color-purple-2) dark:text-white font-extrabold">Consultas</h2>
+
+    <div class="mt-10 flex justify-around ">
+        {
+            queries.map(res => (
+                <CardQueries 
+                    title = {res.title}
+                    img = {res.img}
+                    url = {res.url}
+                />
+
+            ))
+        }
+    </div>
     
-</section>
+</article>

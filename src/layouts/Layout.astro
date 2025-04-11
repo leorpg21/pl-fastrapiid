@@ -58,4 +58,12 @@ const { title, footer = true } = Astro.props;
 	.title-page {
 		@apply py-14 text-(--color-purple-2) text-center font-bold text-2xl md:text-3xl xl:text-4xl dark:text-orange-400;
 	}
+	.mask-fade-bottom {
+		-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+  }
 </style>

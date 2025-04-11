@@ -1,0 +1,36 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+const title = '404 | Pag.';
+const footer = false;
+---
+
+<Layout 
+    title={title}
+    footer={footer}
+
+>
+    <section class="bg-[rgba(109,56,241,0.8))] dark:bg-[rgba(10,2,31,0.8)] w-full h-screen p-20">
+        <div class="bg-white dark:bg-[rgba(109,56,241,0.8))] w-full h-full rounded-xl flex flex-col justify-center items-center py-20">
+            <h1 class="text-9xl font-extrabold dark:text-white tracking-widest">404</h1>
+            <div class="bg-[#FF6A3D] px-2 text-sm rounded rotate-12 absolute">
+                Page Not Found
+            </div>
+            <button class="mt-5">
+              <a
+                class="relative inline-block text-sm font-medium text-[#FF6A3D] group active:text-orange-500 focus:outline-none focus:ring"
+              >
+                <span
+                  class="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-[#FF6A3D] group-hover:translate-y-0 group-hover:translate-x-0"
+                ></span>
+        
+                <span class="relative block px-8 py-3 bg-(--color-purple) dark:bg-(--color-purple-2) border border-current">
+                  <router-link to="/">Go Home</router-link>
+                </span>
+              </a>
+            </button>
+        </div>
+        
+
+    </section>
+</Layout>

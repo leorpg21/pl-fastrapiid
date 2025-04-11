@@ -6,9 +6,12 @@ import '@styles/global.css';
 
 interface Props {
 	title: string;
+	footer?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, footer = true } = Astro.props;
+
+
 ---
 
 
@@ -29,7 +32,11 @@ const { title } = Astro.props;
 		<main class="min-h-screen">
 			<slot />
 		</main>
-		<Footer />
+		{
+			footer == true && (
+				<Footer />
+			)
+		}
 	</body>
 </html>
 
@@ -46,5 +53,9 @@ const { title } = Astro.props;
 
 	.bg-footer {
 		@apply bg-gradient-to-b from-[rgba(255,0,0,0)] dark:from-[rgb(81,50,158)]  to-[rgba(109,56,241,0.8)] dark:to-[rgba(10,2,31,0.8)]
+	}
+
+	.title-page {
+		@apply py-14 text-(--color-purple-2) text-center font-bold text-2xl md:text-3xl xl:text-4xl dark:text-orange-400;
 	}
 </style>

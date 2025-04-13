@@ -61,14 +61,15 @@ console.log(urlPath);
 
             <!-- Imagen -->
             <div>
+                {urlPath.pathname}
                 {
                     urlPath.pathname === '/estadisticas/goles' && (
-                        <img src="/statistics/goles.svg" alt="goles" transition:name="img-goles" class="mask-fade-bottom"/>
+                        <img src="/statistics/goles.webp" alt="goles" transition:name="img-goles" class="mask-fade-bottom"/>
                     )
                 }
                 {
                     urlPath.pathname === '/estadisticas/asistencias' && (
-                        <img src="/statistics/asistencias.svg" alt="asistencias" transition:name="img-asistencias" class="mask-fade-bottom"/>
+                        <img src="/statistics/asistencias.webp" alt="asistencias" transition:name="img-asistencias" class="mask-fade-bottom"/>
                     )
                 }
 
